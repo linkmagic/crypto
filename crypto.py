@@ -9,15 +9,12 @@ FILE_POS_DATA_START = 138
 def loadText(textPath):
     with open(textPath, 'r') as textFile:
         data = textFile.read()
-        textFile.close()
-
     return bytearray(data, 'utf-8')
 
 
 def loadImage(imagePath):
     with open(imagePath, 'rb') as imageFile:
         data = imageFile.read()
-        imageFile.close()
     return bytearray(data)
 
 
@@ -67,7 +64,6 @@ def encrypt(imagePath, textPath):
 
     with open('imgresult.bmp', 'wb') as imgResult:
         imgResult.write(dataImg)
-        imgResult.close()
 
 
 def decrypt(imagePath):
@@ -84,7 +80,6 @@ def decrypt(imagePath):
 
     with open('txtresult.txt', 'w') as txtResult:
         txtResult.write(str(bytes(resultTxt)))
-        txtResult.close()
 
 
 def fileExists(filePath):
@@ -95,8 +90,8 @@ argvHelp = """Cryptographer text in picture v1.0
 
 USAGE:
 
-encryption:\tcoder -e <image.bmp>
-decryption:\tcoder -d <image.bmp> <text.txt>
+encryption:\tcoder -e <image.bmp> <text.txt>
+decryption:\tcoder -d <image.bmp>
 
 help:\t\tcoder -h
 
